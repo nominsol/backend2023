@@ -27,7 +27,7 @@ int main(){
         cerr << "listen() failed: " << strerror(errno) << endl;
         return 1;
     }
-
+    
     memset(&sin, 0, sizeof(sin));
     unsigned int sin_len = sizeof(sin);
     int clientSock = accept(passiveSock, (struct sockaddr *)&sin, &sin_len);
