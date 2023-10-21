@@ -16,7 +16,7 @@ int main() {
     memset(&sin, 0, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_port = htons(20150);
-    sin.sin_addr.s_addr = INADDR_ANY;
+    sin.sin_addr.s_addr = inet_addr("127.0.0.1");
 
     if (bind(s, (struct sockaddr *)&sin, sizeof(sin)) < 0) {
         cerr << strerror(errno) << endl;
@@ -32,6 +32,8 @@ int main() {
         if (numBytes < 0) {
             return 1;
         }
+
+        cout << buf << endl;
 
         numBytes = sendto(s, buf, numBytes, 0, (struct sockaddr *)&cli_addr, cli_addr_len);
         
