@@ -45,6 +45,17 @@ int main(){
 		cout << "Received: " << r << "bytes" << endl;
 	}
 
+	r = recv(s, buf, sizeof(buf), 0);
+	if(r < 0){
+		cerr << "recv() failed: " << strerror(errno) << endl;
+	}
+	else if(r == 0){
+		cout<< "Socket closed" << endl;
+	}
+	else{
+		cout << "Received: " << r << "bytes" << endl;
+	}
+
 	close(s);
 	return 0;
 }
